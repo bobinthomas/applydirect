@@ -54,7 +54,7 @@ export function ProfileForm({ resumeMd, config }: { resumeMd: string; config: Pr
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ id: "me", resume_md: resume, config: nextConfig }),
       });
-      const body = await res.json();
+      const body: any = await res.json();
       if (!res.ok) throw new Error(body?.error ?? `save failed (${res.status})`);
       setSaved(body.version);
       router.refresh();

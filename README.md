@@ -55,15 +55,10 @@ ten dismissed titles go into the judge prompt as negative examples.
 
 ```bash
 npm install
+npx wrangler login
 npx wrangler d1 create direct-apply     # paste database_id into wrangler.jsonc
 npm run db:migrate
-```
-
-Open `seed/seed.sql`, replace `REPLACE_WITH_seed/profile.md` with the contents of
-`seed/profile.md` as a single-quoted SQL string, then:
-
-```bash
-npm run db:seed
+npm run db:seed                          # inlines seed/profile.md, then seeds
 npm run dev
 ```
 
@@ -73,8 +68,8 @@ emulation instead, a separate SQLite file wrangler keeps under `.wrangler/state`
 run entirely on your machine, migrate and seed local instead:
 
 ```bash
-npx wrangler d1 migrations apply direct-apply --local
-npx wrangler d1 execute direct-apply --local --file=seed/seed.sql
+npm run db:migrate:local
+npm run db:seed:local
 ```
 
 This works even before `wrangler d1 create` has ever run — the placeholder
@@ -88,7 +83,7 @@ login every page that touches D1 returns 500, because wrangler sets up all
 bindings together. To browse and harvest without an account, skip the AI binding:
 
 ```bash
-LOCAL_ONLY=1 npm run dev   # D1 pages and harvest work; /api/rank will fail
+npm run dev:offline   # LOCAL_ONLY=1; D1 pages and harvest work, /api/rank fails
 ```
 
 Kick it manually the first time:

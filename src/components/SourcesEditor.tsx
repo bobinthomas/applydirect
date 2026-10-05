@@ -75,7 +75,7 @@ export function SourcesEditor({
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ label: `${channel.label} search`, channel: channel.id, q: preview, active: true }),
       });
-      const body = await res.json();
+      const body: any = await res.json();
       if (!res.ok) throw new Error(body?.error ?? "failed to save");
       setQueries((qs) => [...qs, { id: body.id, label: `${channel.label} search`, channel: channel.id, q: preview, active: 1, last_run: null, found: 0 }]);
       setMsg(`Saved as a discovery source. It runs on the weekly cron, or POST /api/discover now.`);
@@ -120,7 +120,7 @@ export function SourcesEditor({
         method: "POST", headers: { "content-type": "application/json" },
         body: JSON.stringify(queryIds ? { queryIds } : {}),
       });
-      const body = await res.json();
+      const body: any = await res.json();
       if (!res.ok) throw new Error(body?.error ?? "discovery failed");
       setMsg(
         body.queries === 0
