@@ -82,6 +82,15 @@ This works even before `wrangler d1 create` has ever run — the placeholder
 database only matters once you deploy, since Workers AI itself has no local
 emulation and always calls the real service either way.
 
+That AI binding is why `next dev` asks for Cloudflare auth on the first request.
+Run `npx wrangler login` once and everything works, ranking included. Without a
+login every page that touches D1 returns 500, because wrangler sets up all
+bindings together. To browse and harvest without an account, skip the AI binding:
+
+```bash
+LOCAL_ONLY=1 npm run dev   # D1 pages and harvest work; /api/rank will fail
+```
+
 Kick it manually the first time:
 
 ```bash
