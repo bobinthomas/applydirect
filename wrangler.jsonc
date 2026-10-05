@@ -1,0 +1,30 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "direct-apply",
+  "main": "custom-worker.ts",
+  "compatibility_date": "2026-05-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "direct-apply",
+      "database_id": "PASTE_AFTER_wrangler_d1_create",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  "ai": { "binding": "AI" },
+
+  "triggers": {
+    "crons": ["0 2 * * *", "30 2 * * *", "0 3 * * 1"]
+  },
+
+  "vars": {
+    "SELF_URL": "https://direct-apply.YOURNAME.workers.dev"
+  },
+
+  "observability": { "enabled": true }
+}

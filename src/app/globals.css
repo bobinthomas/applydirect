@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+:root{
+  --paper:#E6E7E2; --panel:#F5F6F2; --sunk:#DEE0D9;
+  --ink:#171A17; --ink2:#5B6159; --rule:#CBCFC5;
+  --signal:#1E3FCF; --neg:#8A3A2E;
+}
+html,body{background:var(--paper);color:var(--ink)}
+body{font-family:Archivo,ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}

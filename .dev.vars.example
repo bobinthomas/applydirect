@@ -1,0 +1,5 @@
+# Only discovery needs keys. Harvest and ranking run without any.
+SEARCH_API_KEY=your_google_custom_search_key
+SEARCH_CX=your_programmable_search_engine_id
+ADMIN_TOKEN=long_random_string_for_the_write_endpoints
+SELF_URL=http://localhost:3000
