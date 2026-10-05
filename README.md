@@ -53,6 +53,9 @@ ten dismissed titles go into the judge prompt as negative examples.
 
 ## Setup
 
+**On Windows and new to this?** Follow [SETUP-WINDOWS.md](SETUP-WINDOWS.md) instead. It runs
+everything on your own computer for free.
+
 ```bash
 npm install
 npx wrangler login
